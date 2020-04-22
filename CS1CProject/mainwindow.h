@@ -42,6 +42,10 @@ private slots:
 
     void on_adminReturn_clicked();
 
+    void on_ContactUs_clicked();
+
+    void on_writeTest_clicked();
+
 protected:
     void keyPressEvent(QKeyEvent* pe);
 

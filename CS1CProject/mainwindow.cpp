@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "contactus.h"
+#include "testimonials.h"
 #include <QMessageBox>
 #include <QPixmap>
 
@@ -8,11 +10,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-   QPixmap pix("/Users/littlejimmyfirl/Logo.png");
+   QPixmap pix("/Users/littlejimmyfirl/logo4.png");
    int w = ui->label5->width();
    int h = ui->label5->height();
 
    ui->label5->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+
+   QFile file(QDir::homePath() + "/testimonials.txt");
+      if(!file.exists())
+      {
+          qDebug() << file.fileName() << " does not exist";
+      }
 }
 
 MainWindow::~MainWindow()
@@ -27,7 +35,7 @@ void MainWindow::on_guestButton_clicked()
 
 void MainWindow::changetoGuestLandingPage()
 {
-    ui->stackedWidget->setCurrentWidget(ui->GuestLandingPage);
+    ui->stackedWidget->setCurrentWidget(ui->landingPAge);
     page++;
 }
 
@@ -46,7 +54,7 @@ void MainWindow::on_LoginButton_clicked()
     if(username == "admin" && password == "admin")
     {
      QMessageBox::information(this, "Login", "Username and password is correct");
-     changeToAdmin();
+     changetoGuestLandingPage();
      this->ui->usernameLine->setText("");
      this->ui->passwordLine->setText("");
     }
@@ -84,4 +92,20 @@ void MainWindow::changeToMenu()
 void MainWindow::on_adminReturn_clicked()
 {
     changeToMenu();
+}
+
+
+void MainWindow::on_ContactUs_clicked()
+{
+    ContactUs contact;
+    contact.setModal(true);
+    contact.exec();
+
+}
+
+void MainWindow::on_writeTest_clicked()
+{
+    Testimonials test;
+    test.setModal(true);
+    test.exec();
 }
