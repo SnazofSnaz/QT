@@ -2,12 +2,15 @@
 #include "ui_mainwindow.h"
 #include "contactus.h"
 #include "testimonials.h"
+#include "controller.h"
+
 #include <QMessageBox>
 #include <QPixmap>
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(controller *controller, QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),
+     m_controller(controller)
 {
     ui->setupUi(this);
    QPixmap pix("/Users/littlejimmyfirl/logo4.png");

@@ -13,6 +13,7 @@
 #include <QKeyEvent>
 #include <QDate>
 #include <QInputDialog>
+#include "controller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,7 +24,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(controller *controller, QWidget *parent = nullptr);
     ~MainWindow();
 
     int page = 0;
@@ -51,5 +52,6 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+    controller *m_controller;
 };
 #endif // MAINWINDOW_H
