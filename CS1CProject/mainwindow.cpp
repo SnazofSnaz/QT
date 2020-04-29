@@ -3,7 +3,6 @@
 #include "contactus.h"
 #include "testimonials.h"
 #include "controller.h"
-#include "vector.h"
 
 #include <QMessageBox>
 #include <QPixmap>
