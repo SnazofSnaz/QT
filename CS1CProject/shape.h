@@ -118,6 +118,7 @@ public:
     Circle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Ellipse} {}
     ~Circle() override {}
     void setCircle(const int x, const int y, int radius);
+    void draw(const int x, const int y) override;
     double area() override;
     double perimeter() override;
 };

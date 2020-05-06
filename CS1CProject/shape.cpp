@@ -136,8 +136,67 @@ void Square::setSquare(const int x, const int y, int length){
     rectangle.setRect(x, y, length, length);
 }
 
+void Square::draw(const int x, const int y){
+    getPainter().setPen(getPen());
+    getPainter().setBrush(getBrush());
+    getPainter().save();
+    getPainter().translate(x, y);
+    getPainter().drawRect(rectangle);
+    getPainter().restore();
+}
 
+double Square::area(){
+    return pow(rectangle.width(), 2);
+}
 
+double Square::perimeter(){
+    return 4 * rectangle.width();
+}
 
+// ELLIPSE ----------------------------------------------------------
 
+void Ellipse::setEllipse(const int x, const int y, int majorAxis, int minorAxis){
+    rectangle.setRect(x, y, majorAxis * 2, minorAxis * 2);
+}
 
+void Ellipse::draw(const int x, const int y){
+    getPainter().setPen(getPen());
+    getPainter().setBrush(getBrush());
+    getPainter().save();
+    getPainter().translate(x, y);
+    getPainter().drawEllipse(rectangle);
+    getPainter().restore();
+}
+
+double Ellipse::area(){
+   return M_PI * ((rectangle.width()/2) * (rectangle.height()/2));
+}
+
+double Ellipse::perimeter(){
+    return 2 * M_PI * sqrt((pow(rectangle.width()/2, 2) + pow(rectangle.height()/2, 2)) / 2);
+}
+
+// CIRCLE ------------------------------------------------------------
+
+void Circle::setCircle(const int x, const int y, int radius){
+    rectangle.setRect(x, y, radius*2, radius*2);
+}
+
+void Circle::draw(const int x, const int y){
+    getPainter().setPen(getPen());
+    getPainter().setBrush(getBrush());
+    getPainter().save();
+    getPainter().translate(x, y);
+    getPainter().drawEllipse(rectangle);
+    getPainter().restore();
+}
+
+double Circle::area(){
+    return M_PI * pow(rectangle.width()/2, 2);
+}
+
+double Circle::perimeter(){
+    return 2 * (M_PI * rectangle.width()/2);
+}
+
+//-----------------------------------------------------------------------
