@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Canvas.cpp \
     contactus.cpp \
     controller.cpp \
     main.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
     testimonials.cpp
 
 HEADERS += \
+    Canvas.h \
     contactus.h \
     controller.h \
     mainwindow.h \

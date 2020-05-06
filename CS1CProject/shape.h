@@ -15,7 +15,7 @@ public:
 
     Shape(QPaintDevice* device = nullptr, int shapeId = -1, shapeType shape = shapeType::nullShape);
 
-    virtual ~Shape();
+    virtual ~Shape() {}
 
     void setShape(shapeType shape);
     void setPen(Qt::GlobalColor color, int width, Qt::PenStyle penStyle, Qt::PenCapStyle capStyle, Qt::PenJoinStyle joinStyle);
@@ -26,7 +26,7 @@ public:
     const QBrush& getBrush() const;
 
     virtual void draw(const int x, const int y) = 0;
-    virtual void move() = 0;
+    //virtual void move() = 0;
     virtual double area() = 0;
     virtual double perimeter() = 0;
 
@@ -42,7 +42,7 @@ protected:
     QPainter& getPainter();
 
 private:
-    QPainter painter;
+    QPainter painter; //QPainter object to draw from
     int shapeId;
     shapeType shape;
     QPen pen;

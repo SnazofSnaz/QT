@@ -2,6 +2,12 @@
 
 // SHAPE ------------------------------------------------------
 
+Shape::Shape(QPaintDevice* device, int shapeId, shapeType shape){
+    //something else goes here i swear
+    this->shapeId = shapeId;
+    this->shape = shape;
+}
+
 void Shape::setShape(shapeType shape){
     this->shape = shape;
 }
