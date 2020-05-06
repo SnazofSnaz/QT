@@ -21,12 +21,14 @@ SOURCES += \
     controller.cpp \
     main.cpp \
     mainwindow.cpp \
+    shape.cpp \
     testimonials.cpp
 
 HEADERS += \
     contactus.h \
     controller.h \
     mainwindow.h \
+    shape.h \
     testimonials.h
 
 FORMS += \

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMainWindow>
+#include <QPainter>
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlDriver>
