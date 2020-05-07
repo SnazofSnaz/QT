@@ -15,6 +15,7 @@
 #include <QDate>
 #include <QInputDialog>
 #include "controller.h"
+#include "shape.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

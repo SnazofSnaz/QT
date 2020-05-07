@@ -6,7 +6,6 @@
 
 #include <QMessageBox>
 #include <QPixmap>
-#include "shape.h"
 
 MainWindow::MainWindow(controller *controller, QWidget *parent)
     : QMainWindow(parent)

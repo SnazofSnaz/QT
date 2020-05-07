@@ -42,7 +42,7 @@ protected:
     QPainter& getPainter();
 
 private:
-    QPainter painter; //QPainter object to draw from
+    QPainter painter; //QPainter object to draw with
     int shapeId;
     shapeType shape;
     QPen pen;
@@ -56,7 +56,7 @@ public:
     Line(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Line} {}
     ~Line() override {}
     void draw(const int x, const int y) override;
-    void setPoints(const QPoint& start, const QPoint& end);
+    void setPoints(const int startX, const int startY, const int endX, const int endY);
 };
 
 class Polyline : public Shape {
@@ -85,7 +85,7 @@ public:
     Rectangle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Rectangle} {}
     ~Rectangle() override {}
     void draw(const int x, const int y) override;
-    void setRectangle(const int x, const int y, int length, int width);
+    void setRectangle(const int x, const int y, const int length, const int width);
     double area() override;
     double perimeter() override;
 };
@@ -96,7 +96,7 @@ public:
     Square(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Square} {}
     ~Square() override {}
     void draw(const int x, const int y) override;
-    void setSquare(const int x, const int y, int length);
+    void setSquare(const int x, const int y, const int length);
     double area() override;
     double perimeter() override;
 };
@@ -107,7 +107,7 @@ public:
     Ellipse(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Ellipse} {}
     ~Ellipse() override {}
     void draw(const int x, const int y) override;
-    void setEllipse(const int x, const int y, int majorAxis, int minorAxis);
+    void setEllipse(const int x, const int y, const int majorAxis, const int minorAxis);
     double area() override;
     double perimeter() override;
 };
@@ -117,10 +117,28 @@ class Circle : public Shape {
 public:
     Circle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Ellipse} {}
     ~Circle() override {}
-    void setCircle(const int x, const int y, int radius);
+    void setCircle(const int x, const int y, const int radius);
     void draw(const int x, const int y) override;
     double area() override;
     double perimeter() override;
+};
+
+class Text : public Shape {
+    QRect rectangle;
+    QString textString;
+    Qt::GlobalColor textColor;
+    Qt::TextFlag textFlag;
+    int textPointSize;
+    QFont font;
+public:
+    Text(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Text} {}
+    ~Text() override {}
+    void setBoundingBox(const int x, const int y, const int length, const int width);
+    void setText(const QString& textString);
+    void setTextColor(Qt::GlobalColor color);
+    void setTextFlags(Qt::TextFlag);
+    void setFont(const QString& textFontFamily, QFont::Style style, QFont::Weight weight, int textSize);
+    void draw(const int x, const int y) override;
 };
 
 #endif // SHAPE_H

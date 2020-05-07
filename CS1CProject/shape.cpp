@@ -3,7 +3,7 @@
 // SHAPE ------------------------------------------------------
 
 Shape::Shape(QPaintDevice* device, int shapeId, shapeType shape){
-    //something else goes here i swear
+    painter.begin(device);
     this->shapeId = shapeId;
     this->shape = shape;
 }
@@ -43,9 +43,9 @@ const QBrush& Shape::getBrush() const{
 
 // LINE  ------------------------------------------------------
 
-void Line::setPoints(const QPoint &start, const QPoint &end){
-    this->start = start;
-    this->end = end;
+void Line::setPoints(const int startX, const int startY, const int endX, const int endY){
+    start = QPoint(startX, startY);
+    end = QPoint(endX, endY);
 }
 
 void Line::draw(const int x, const int y){
@@ -205,4 +205,35 @@ double Circle::perimeter(){
     return 2 * (M_PI * rectangle.width()/2);
 }
 
-//-----------------------------------------------------------------------
+// TEXT ----------------------------------------------------------------
+
+void Text::setBoundingBox(const int x, const int y, const int length, const int width){
+    rectangle.setRect(x, y, length, width);
+}
+
+void Text::setText(const QString& textString){
+    this->textString = textString;
+}
+
+void Text::setTextColor(Qt::GlobalColor color){
+    this->textColor = color;
+}
+
+void Text::setTextFlags(Qt::TextFlag textFlag){
+    this->textFlag = textFlag;
+}
+
+void Text::setFont(const QString &textFontFamily, QFont::Style style, QFont::Weight weight, int textSize){
+    font.setFamily(textFontFamily);
+    font.setStyle(style);
+    font.setWeight(weight);
+    font.setPointSize(textSize);
+}
+
+void Text::draw(const int x, const int y){
+    getPainter().setPen(textColor);
+    getPainter().save();
+    getPainter().translate(x, y);
+    getPainter().drawText(rectangle, textFlag, textString);
+    getPainter().restore();
+}
