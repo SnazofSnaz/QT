@@ -2,10 +2,9 @@
 
 // SHAPE ------------------------------------------------------
 
-Shape::Shape(QPaintDevice* device, int shapeId, shapeType shape){
-    painter.begin(device);
-    this->shapeId = shapeId;
-    this->shape = shape;
+Shape::Shape(QPaintDevice* device, int shapeId, shapeType shape) : painter{device}, shapeId{shapeId}, shape{shape} {
+    pen.setStyle(Qt::NoPen);
+    brush.setStyle(Qt::NoBrush);
 }
 
 void Shape::setShape(shapeType shape){

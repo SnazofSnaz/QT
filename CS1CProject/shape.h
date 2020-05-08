@@ -11,6 +11,7 @@
 class Shape
 {
 public:
+
     enum class shapeType {nullShape, Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
 
     Shape(QPaintDevice* device = nullptr, int shapeId = -1, shapeType shape = shapeType::nullShape);
@@ -137,7 +138,7 @@ public:
     void setText(const QString& textString);
     void setTextColor(Qt::GlobalColor color);
     void setTextFlags(Qt::TextFlag);
-    void setFont(const QString& textFontFamily, QFont::Style style, QFont::Weight weight, int textSize);
+    void setFont(const QString& textFontFamily, QFont::Style style, QFont::Weight weight, const int textSize);
     void draw(const int x, const int y) override;
 };
 
