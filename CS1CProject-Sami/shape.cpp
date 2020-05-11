@@ -56,6 +56,14 @@ void Line::draw(const int x, const int y){
     getPainter().restore();
 }
 
+double Line::area(){
+    return 0;
+}
+
+double Line::perimeter(){
+    return 0;
+}
+
 // POLYLINE ---------------------------------------------------
 
 void Polyline::setPoints(const QList<QPoint> points){
@@ -69,6 +77,14 @@ void Polyline::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawPolyline(&points.first(), points.size());
     getPainter().restore();
+}
+
+double Polyline::area(){
+    return 0;
+}
+
+double Polyline::perimeter(){
+    return 0;
 }
 
 // POLYGON ----------------------------------------------------
@@ -235,4 +251,12 @@ void Text::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawText(rectangle, textFlag, textString);
     getPainter().restore();
+}
+
+double Text::area(){
+    return 0;
+}
+
+double Text::perimeter(){
+    return 0;
 }

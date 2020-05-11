@@ -58,6 +58,8 @@ public:
     ~Line() override {}
     void draw(const int x, const int y) override;
     void setPoints(const int startX, const int startY, const int endX, const int endY);
+    double area() override;
+    double perimeter() override;
 };
 
 class Polyline : public Shape {
@@ -67,6 +69,8 @@ public:
     ~Polyline() override {}
     void draw(const int x, const int y) override;
     void setPoints(const QList<QPoint> points);
+    double area() override;
+    double perimeter() override;
 };
 
 class Polygon : public Shape {
@@ -140,6 +144,8 @@ public:
     void setTextFlags(Qt::TextFlag);
     void setFont(const QString& textFontFamily, QFont::Style style, QFont::Weight weight, const int textSize);
     void draw(const int x, const int y) override;
+    double area() override;
+    double perimeter() override;
 };
 
 #endif // SHAPE_H
