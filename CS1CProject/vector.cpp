@@ -6,7 +6,7 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include "vector_doubles.h"
+#include "vector.h"
 using namespace myStd;
 
 #include <iostream>
