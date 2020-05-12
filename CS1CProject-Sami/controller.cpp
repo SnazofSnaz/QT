@@ -18,6 +18,8 @@ controller::controller(QObject *parent) : QObject(parent)
     createTable();
     createTextTable();
     readShapesFile();
+    addPerimeterandArea();
+
 }
 /**
  * @brief controller::createTable
@@ -81,6 +83,19 @@ void controller::createTextTable()
     {
         qDebug() << "error creating text table" << endl;
     }
+}
+
+void controller::addPerimeterandArea()
+{
+    QSqlQuery qry;
+    qry.prepare("ALTER TABLE shape ADD area integer");
+    qry.exec();
+
+    qry.clear();
+    qry.prepare("ALTER TABLE shape ADD perimeter integer");
+    qry.exec();
+
+
 }
 bool controller::readShapesFile()
 {
@@ -880,4 +895,17 @@ QVector<QString> controller::readCircleEnums()
      circleEnums[6] = brushStyle;
 
      return circleEnums;
+}
+
+void controller::updatePermandArea(double a, double p, int id)
+{
+    QSqlQuery qry;
+    QString area = QString::number(a);
+    QString perimeter = QString::number(p);
+    QString ids = QString::number(id);
+
+    qry.prepare("update shape set area = '"+area+"',perimeter = '"+perimeter+"' where id = '"+ids+"'");
+    qry.exec();
+
+    qry.clear();
 }

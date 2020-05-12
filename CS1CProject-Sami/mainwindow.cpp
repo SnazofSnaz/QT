@@ -5,6 +5,7 @@
 #include "controller.h"
 #include "vector.h"
 #include "Canvas.h"
+#include "shape.h"
 
 #include <QMessageBox>
 #include <QPixmap>
@@ -26,6 +27,7 @@ MainWindow::MainWindow(controller *controller, QWidget *parent)
       {
           qDebug() << file.fileName() << " does not exist";
       }
+
 }
 
 MainWindow::~MainWindow()
@@ -41,12 +43,6 @@ void MainWindow::on_guestButton_clicked()
 void MainWindow::changetoGuestLandingPage()
 {
     ui->stackedWidget->setCurrentWidget(ui->landingPAge);
-    if(page > 0)
-    {
-        ui->loginType->setText("Admin");
-    }
-    else
-        ui->loginType->setText("Guest User");
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* pe)
@@ -66,6 +62,7 @@ void MainWindow::on_LoginButton_clicked()
      QMessageBox::information(this, "Login", "Username and password is correct");
      changetoGuestLandingPage();
      page++;
+     ui->loginType->setText("Admin");
      this->ui->usernameLine->setText("");
      this->ui->passwordLine->setText("");
     }
@@ -125,5 +122,18 @@ void MainWindow::on_writeTest_clicked()
 void MainWindow::on_shapeCombo_currentIndexChanged(const QString &arg1)
 {
     QString shapeDraw;
+    double perimeterS;
+    double areaS;
     shapeDraw = ui->shapeCombo->currentText();
+        if(shapeDraw == "Line")
+        {
+            Line myline(this,1);
+            perimeterS = myline.perimeter();
+            areaS = myline.area();
+
+            ui->perimeter->setText(QString::number(perimeterS));
+            ui->area->setText(QString::number(areaS));
+        }
 }
+
+

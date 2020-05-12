@@ -22,6 +22,8 @@ public:
     void createTable();
     void createTextTable();
     bool readShapesFile();
+    void addPerimeterandArea();
+    void updatePermandArea(double a, double p, int id);
     void createShape(int id, QString type, int dimenOne, int dimenTwo, int dimenThree, int dimenFour, int dimenFive, int dimenSix, int dimenSeven,
                      int dimenEight, QString color, int width, QString style, QString capStyle, QString joinStyle,
                      QString brishColor, QString brushStyle);

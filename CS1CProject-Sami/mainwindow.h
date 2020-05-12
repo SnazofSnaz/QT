@@ -15,9 +15,7 @@
 #include <QDate>
 #include <QInputDialog>
 #include "controller.h"
-#include "shape.h"
-#include "vector.h"
-#include "Canvas.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -57,7 +55,6 @@ protected:
     void keyPressEvent(QKeyEvent* pe);
 
 private:
-    Canvas *myCanvas;
     Ui::MainWindow *ui;
     controller *m_controller;
 };
