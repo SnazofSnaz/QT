@@ -41,10 +41,10 @@ public:
 
 protected:
     QPainter& getPainter();
+    int shapeId;
 
 private:
     QPainter painter; //QPainter object to draw with
-    int shapeId;
     shapeType shape;
     QPen pen;
     QBrush brush;
@@ -63,12 +63,12 @@ public:
 };
 
 class Polyline : public Shape {
-    QList<QPoint> points;
+    QVector<QPoint> points;
 public:
     Polyline(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Polyline} {}
     ~Polyline() override {}
     void draw(const int x, const int y) override;
-    void setPoints(const QList<QPoint> points);
+    void setPoints(const QVector<QPoint> points);
     double area() override;
     double perimeter() override;
 };
@@ -79,7 +79,7 @@ public:
     Polygon(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Line} {}
     ~Polygon() override {}
     void draw(const int x, const int y) override;
-    void setPolygon(const QList<QPoint> points);
+    void setPolygon(const QVector<QPoint> points);
     double area() override;
     double perimeter() override;
 };

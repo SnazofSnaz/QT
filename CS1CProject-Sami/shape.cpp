@@ -54,6 +54,7 @@ void Line::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawLine(start, end);
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Line::area(){
@@ -66,7 +67,7 @@ double Line::perimeter(){
 
 // POLYLINE ---------------------------------------------------
 
-void Polyline::setPoints(const QList<QPoint> points){
+void Polyline::setPoints(const QVector<QPoint> points){
     this->points = points;
 }
 
@@ -77,6 +78,7 @@ void Polyline::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawPolyline(&points.first(), points.size());
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Polyline::area(){
@@ -89,7 +91,7 @@ double Polyline::perimeter(){
 
 // POLYGON ----------------------------------------------------
 
-void Polygon::setPolygon(const QList<QPoint> points){
+void Polygon::setPolygon(const QVector<QPoint> points){
     for(QPoint point : points){
         poly << point;
     }
@@ -102,6 +104,7 @@ void Polygon::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawPolygon(poly);
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Polygon::area(){
@@ -141,6 +144,7 @@ void Rectangle::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawRect(rectangle);
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Rectangle::area(){
@@ -164,6 +168,7 @@ void Square::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawRect(rectangle);
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Square::area(){
@@ -187,6 +192,7 @@ void Ellipse::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawEllipse(rectangle);
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Ellipse::area(){
@@ -210,6 +216,7 @@ void Circle::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawEllipse(rectangle);
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Circle::area(){
@@ -251,6 +258,7 @@ void Text::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawText(rectangle, textFlag, textString);
     getPainter().restore();
+    getPainter().drawText(x+10, y+10, QString("ID: " + QString::number(shapeId)));
 }
 
 double Text::area(){
