@@ -17,6 +17,7 @@
 #include "controller.h"
 #include "shape.h"
 #include "vector.h"
+#include "Canvas.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -50,10 +51,13 @@ private slots:
 
     void on_writeTest_clicked();
 
+    void on_shapeCombo_currentIndexChanged(const QString &arg1);
+
 protected:
     void keyPressEvent(QKeyEvent* pe);
 
 private:
+    Canvas *myCanvas;
     Ui::MainWindow *ui;
     controller *m_controller;
 };

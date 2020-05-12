@@ -7,9 +7,13 @@
 #include <QtSql>
 #include <QList>
 #include <QMap>
+#include <QVector>
 #include <QFile>
 #include <QFileDialog>
 #include <QStringList>
+#include <QPoint>
+#include "shape.h"
+
 
 class controller : public QObject
 {
@@ -26,8 +30,22 @@ public:
                                int dimenEight,QString textString, QString color, QString textAlignment, int pointSize,
                                QString fontFamily, QString fontStyle, QString fontWeight);
 
-    void readPolygonDimen();
-    void readPolylineDimen();
+    QVector<QPoint>  readPolygonDimen();
+    QVector<QString> readPolygonEnums();
+    QVector<QPoint>  readPolylineDimen();
+    QVector<QString> readPolylineEnums();
+    QVector<int>     readLine();
+    QVector<QString> readLineEnums();
+    QVector<int>     readRectangle();
+    QVector<QString> readRectangleEnums();
+    QVector<int>     readSquare();
+    QVector<QString> readSquareEnums();
+    QVector<int>     readEllipse();
+    QVector<QString> readEllipseEnums();
+    QVector<int>     readCircle();
+    QVector<QString> readCircleEnums();
+
+
 private:
     QSqlDatabase      m_database;
 };

@@ -348,4 +348,3 @@ Qt::AlignmentFlag stringToTextFlag(QString string){
     else
         return Qt::AlignCenter;
 }
-

@@ -114,3 +114,10 @@ void MainWindow::on_writeTest_clicked()
     test.setModal(true);
     test.exec();
 }
+
+
+void MainWindow::on_shapeCombo_currentIndexChanged(const QString &arg1)
+{
+    QString shapeDraw;
+    shapeDraw = ui->shapeCombo->currentText();
+}
