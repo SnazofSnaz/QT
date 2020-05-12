@@ -30,6 +30,7 @@ public:
     //virtual void move() = 0;
     virtual double area() = 0;
     virtual double perimeter() = 0;
+    virtual void setDefault() = 0;
 
     bool operator<(const Shape &other){
         return (this->shapeId < other.shapeId);
@@ -54,8 +55,9 @@ class Line : public Shape {
     QPoint start;
     QPoint end;
 public:
-    Line(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Line} {}
+    Line(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Line} { }
     ~Line() override {}
+    void setDefault() override;
     void draw(const int x, const int y) override;
     void setPoints(const int startX, const int startY, const int endX, const int endY);
     double area() override;
@@ -67,6 +69,7 @@ class Polyline : public Shape {
 public:
     Polyline(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Polyline} {}
     ~Polyline() override {}
+    void setDefault() override;
     void draw(const int x, const int y) override;
     void setPoints(const QVector<QPoint> points);
     double area() override;
@@ -78,6 +81,7 @@ class Polygon : public Shape {
 public:
     Polygon(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Line} {}
     ~Polygon() override {}
+    void setDefault() override;
     void draw(const int x, const int y) override;
     void setPoints(const QVector<QPoint> points);
     double area() override;
@@ -89,6 +93,7 @@ class Rectangle : public Shape {
 public:
     Rectangle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Rectangle} {}
     ~Rectangle() override {}
+    void setDefault() override;
     void draw(const int x, const int y) override;
     void setRectangle(const int x, const int y, const int length, const int width);
     double area() override;
@@ -100,6 +105,7 @@ class Square : public Shape {
 public:
     Square(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Square} {}
     ~Square() override {}
+    void setDefault() override;
     void draw(const int x, const int y) override;
     void setSquare(const int x, const int y, const int length);
     double area() override;
@@ -111,6 +117,7 @@ class Ellipse : public Shape {
 public:
     Ellipse(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Ellipse} {}
     ~Ellipse() override {}
+    void setDefault() override;
     void draw(const int x, const int y) override;
     void setEllipse(const int x, const int y, const int majorAxis, const int minorAxis);
     double area() override;
@@ -122,6 +129,7 @@ class Circle : public Shape {
 public:
     Circle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Ellipse} {}
     ~Circle() override {}
+    void setDefault() override;
     void setCircle(const int x, const int y, const int radius);
     void draw(const int x, const int y) override;
     double area() override;
@@ -138,6 +146,7 @@ class Text : public Shape {
 public:
     Text(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Text} {}
     ~Text() override {}
+    void setDefault() override;
     void setBoundingBox(const int x, const int y, const int length, const int width);
     void setText(const QString& textString);
     void setTextColor(QString color);

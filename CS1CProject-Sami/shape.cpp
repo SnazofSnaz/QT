@@ -42,6 +42,11 @@ const QBrush& Shape::getBrush() const{
 
 // LINE  ------------------------------------------------------
 
+void Line::setDefault(){
+    start = QPoint(0, 0);
+    end = QPoint(0, 0);
+}
+
 void Line::setPoints(const int startX, const int startY, const int endX, const int endY){
     start = QPoint(startX, startY);
     end = QPoint(endX, endY);
@@ -67,6 +72,10 @@ double Line::perimeter(){
 
 // POLYLINE ---------------------------------------------------
 
+void Polyline::setDefault(){
+    points.push_back(QPoint(0,0));
+}
+
 void Polyline::setPoints(const QVector<QPoint> points){
     this->points = points;
 }
@@ -90,6 +99,10 @@ double Polyline::perimeter(){
 }
 
 // POLYGON ----------------------------------------------------
+
+void Polygon::setDefault(){
+    points.push_back(QPoint(0,0));
+}
 
 void Polygon::setPoints(const QVector<QPoint> points){
     this->points = points;
@@ -130,6 +143,9 @@ double Polygon::perimeter(){
 }
 
 // RECTANGLE --------------------------------------------------------
+void Rectangle::setDefault(){
+    rectangle.setRect(0, 0, 0, 0);
+}
 
 void Rectangle::setRectangle(const int x, const int y, int length, int width){
     rectangle.setRect(x, y, length, width);
@@ -154,6 +170,9 @@ double Rectangle::perimeter(){
 }
 
 // SQUARE -----------------------------------------------------------
+void Square::setDefault(){
+    rectangle.setRect(0, 0, 0, 0);
+}
 
 void Square::setSquare(const int x, const int y, int length){
     rectangle.setRect(x, y, length, length);
@@ -178,6 +197,9 @@ double Square::perimeter(){
 }
 
 // ELLIPSE ----------------------------------------------------------
+void Ellipse::setDefault(){
+    rectangle.setRect(0, 0, 0, 0);
+}
 
 void Ellipse::setEllipse(const int x, const int y, int majorAxis, int minorAxis){
     rectangle.setRect(x, y, majorAxis * 2, minorAxis * 2);
@@ -202,6 +224,9 @@ double Ellipse::perimeter(){
 }
 
 // CIRCLE ------------------------------------------------------------
+void Circle::setDefault(){
+    rectangle.setRect(0, 0, 0, 0);
+}
 
 void Circle::setCircle(const int x, const int y, int radius){
     rectangle.setRect(x, y, radius*2, radius*2);
@@ -226,6 +251,10 @@ double Circle::perimeter(){
 }
 
 // TEXT ----------------------------------------------------------------
+void Text::setDefault(){
+    rectangle.setRect(0, 0, 0, 0);
+    textString = " ";
+}
 
 void Text::setBoundingBox(const int x, const int y, const int length, const int width){
     rectangle.setRect(x, y, length, width);
