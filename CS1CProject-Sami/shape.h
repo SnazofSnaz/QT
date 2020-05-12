@@ -19,8 +19,8 @@ public:
     virtual ~Shape() {}
 
     void setShape(shapeType shape);
-    void setPen(Qt::GlobalColor color, int width, Qt::PenStyle penStyle, Qt::PenCapStyle capStyle, Qt::PenJoinStyle joinStyle);
-    void setBrush(Qt::GlobalColor color, Qt::BrushStyle brushStyle);
+    void setPen(QString color, int width, QString penStyle, QString capStyle, QString joinStyle);
+    void setBrush(QString color, QString brushStyle);
 
     shapeType getShape() const;
     const QPen& getPen() const;
@@ -131,8 +131,8 @@ public:
 class Text : public Shape {
     QRect rectangle;
     QString textString;
-    Qt::GlobalColor textColor;
-    Qt::TextFlag textFlag;
+    QString textColor;
+    Qt::AlignmentFlag textFlag;
     int textPointSize;
     QFont font;
 public:
@@ -140,12 +140,20 @@ public:
     ~Text() override {}
     void setBoundingBox(const int x, const int y, const int length, const int width);
     void setText(const QString& textString);
-    void setTextColor(Qt::GlobalColor color);
-    void setTextFlags(Qt::TextFlag);
-    void setFont(const QString& textFontFamily, QFont::Style style, QFont::Weight weight, const int textSize);
+    void setTextColor(QString color);
+    void setTextFlags(QString flag);
+    void setFont(const QString& textFontFamily, QString style, QString weight, const int textSize);
     void draw(const int x, const int y) override;
     double area() override;
     double perimeter() override;
 };
+
+Qt::PenStyle stringToPen(QString string);
+Qt::PenCapStyle stringToCap(QString string);
+Qt::PenJoinStyle stringToJoin(QString string);
+Qt::BrushStyle stringToBrush(QString string);
+QFont::Style stringToStyle(QString string);
+QFont::Weight stringToWeight(QString string);
+Qt::AlignmentFlag stringToTextFlag(QString string);
 
 #endif // SHAPE_H

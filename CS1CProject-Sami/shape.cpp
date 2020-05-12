@@ -11,17 +11,17 @@ void Shape::setShape(shapeType shape){
     this->shape = shape;
 }
 
-void Shape::setPen(Qt::GlobalColor color, int width, Qt::PenStyle penStyle, Qt::PenCapStyle capStyle, Qt::PenJoinStyle joinStyle){
+void Shape::setPen(QString color, int width, QString penStyle, QString capStyle, QString joinStyle){
     pen.setColor(color);
     pen.setWidth(width);
-    pen.setStyle(penStyle);
-    pen.setCapStyle(capStyle);
-    pen.setJoinStyle(joinStyle);
+    pen.setStyle(stringToPen(penStyle));
+    pen.setCapStyle(stringToCap(capStyle));
+    pen.setJoinStyle(stringToJoin(joinStyle));
 }
 
-void Shape::setBrush(Qt::GlobalColor color, Qt::BrushStyle brushStyle){
+void Shape::setBrush(QString color, QString brushStyle){
     brush.setColor(color);
-    brush.setStyle(brushStyle);
+    brush.setStyle(stringToBrush(brushStyle));
 }
 
 QPainter& Shape::getPainter(){
@@ -237,18 +237,18 @@ void Text::setText(const QString& textString){
     this->textString = textString;
 }
 
-void Text::setTextColor(Qt::GlobalColor color){
+void Text::setTextColor(QString color){
     this->textColor = color;
 }
 
-void Text::setTextFlags(Qt::TextFlag textFlag){
-    this->textFlag = textFlag;
+void Text::setTextFlags(QString flag){
+    this->textFlag = stringToTextFlag(flag);
 }
 
-void Text::setFont(const QString &textFontFamily, QFont::Style style, QFont::Weight weight, int textSize){
+void Text::setFont(const QString &textFontFamily, QString style, QString weight, int textSize){
     font.setFamily(textFontFamily);
-    font.setStyle(style);
-    font.setWeight(weight);
+    font.setStyle(stringToStyle(style));
+    font.setWeight(stringToWeight(weight));
     font.setPointSize(textSize);
 }
 
@@ -268,3 +268,84 @@ double Text::area(){
 double Text::perimeter(){
     return 0;
 }
+
+//HELPER FUNC ---------------------------------------------------
+Qt::PenStyle stringToPen(QString string){
+    if(string == "SolidLine")
+        return Qt::SolidLine;
+    else if(string == "DashLine")
+        return Qt::DashLine;
+    else if(string == "DotLine")
+        return Qt::DotLine;
+    else if(string == "DashDotLine")
+        return Qt::DashDotLine;
+    else if(string == "DashDotDotLine")
+        return Qt::DashDotDotLine;
+    else if(string == "CustomDashLine")
+        return Qt::CustomDashLine;
+    else
+        return Qt::NoPen;
+}
+
+Qt::PenCapStyle stringToCap(QString string){
+    if(string == "FlatCap")
+        return Qt::FlatCap;
+    else if(string == "SquareCap")
+        return Qt::SquareCap;
+    else
+        return Qt::RoundCap;
+}
+
+Qt::PenJoinStyle stringToJoin(QString string){
+    if(string == "MiterJoin")
+        return Qt::MiterJoin;
+    else if(string == "BevelJoin")
+        return Qt::BevelJoin;
+    else
+        return Qt::RoundJoin;
+}
+
+Qt::BrushStyle stringToBrush(QString string){
+    if(string == "SolidPattern")
+        return Qt::SolidPattern;
+    else if(string == "HorPattern")
+        return Qt::HorPattern;
+    else if(string == "VerPattern")
+        return Qt::VerPattern;
+    else
+        return Qt::NoBrush;
+}
+
+QFont::Style stringToStyle(QString string){
+    if(string == "StyleNormal")
+        return QFont::StyleNormal;
+    else if(string == "StyleItalic")
+        return QFont::StyleItalic;
+    else
+        return QFont::StyleOblique;
+}
+
+QFont::Weight stringToWeight(QString string){
+    if(string == "Thin")
+        return QFont::Thin;
+    else if(string == "Light")
+        return QFont::Light;
+    else if(string == "Normal")
+        return QFont::Normal;
+    else
+        return QFont::Bold;
+}
+
+Qt::AlignmentFlag stringToTextFlag(QString string){
+    if(string == "AlignLeft")
+        return Qt::AlignLeft;
+    else if(string == "AlignRight")
+        return Qt::AlignRight;
+    else if(string == "AlignTop")
+        return Qt::AlignTop;
+    else if(string == "AlignBottom")
+        return Qt::AlignBottom;
+    else
+        return Qt::AlignCenter;
+}
+
