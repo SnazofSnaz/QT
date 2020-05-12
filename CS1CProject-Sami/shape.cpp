@@ -87,7 +87,7 @@ void Polyline::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawPolyline(&points.first(), points.size());
     getPainter().restore();
-    getPainter().drawText(points[0].x() - 10, points[0].y() - 50, QString("ID: " + QString::number(shapeId)));
+    getPainter().drawText(points[0].x() - 15, points[0].y() - 50, QString("ID: " + QString::number(shapeId)));
 }
 
 double Polyline::area(){
@@ -115,7 +115,7 @@ void Polygon::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawConvexPolygon(&points.first(),points.size());
     getPainter().restore();
-    getPainter().drawText(points[0].x() - 10, points[0].y() - 50, QString("ID: " + QString::number(shapeId)));
+    getPainter().drawText(points[0].x() - 15, points[0].y() - 50, QString("ID: " + QString::number(shapeId)));
 }
 
 double Polygon::area(){
@@ -285,7 +285,7 @@ void Text::draw(const int x, const int y){
     getPainter().translate(x, y);
     getPainter().drawText(rectangle, textFlag, textString);
     getPainter().restore();
-    getPainter().drawText(rectangle.x(), rectangle.y(), QString("ID: " + QString::number(shapeId)));
+    getPainter().drawText(rectangle.x() + 50, rectangle.y(), QString("ID: " + QString::number(shapeId)));
 }
 
 double Text::area(){
