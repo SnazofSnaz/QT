@@ -74,12 +74,12 @@ public:
 };
 
 class Polygon : public Shape {
-    QPolygon poly;
+    QVector<QPoint> points;
 public:
     Polygon(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, shapeType::Line} {}
     ~Polygon() override {}
     void draw(const int x, const int y) override;
-    void setPolygon(const QVector<QPoint> points);
+    void setPoints(const QVector<QPoint> points);
     double area() override;
     double perimeter() override;
 };

@@ -91,10 +91,8 @@ double Polyline::perimeter(){
 
 // POLYGON ----------------------------------------------------
 
-void Polygon::setPolygon(const QVector<QPoint> points){
-    for(QPoint point : points){
-        poly << point;
-    }
+void Polygon::setPoints(const QVector<QPoint> points){
+    this->points == points;
 }
 
 void Polygon::draw(const int x, const int y){
@@ -102,31 +100,31 @@ void Polygon::draw(const int x, const int y){
     getPainter().setBrush(getBrush());
     getPainter().save();
     getPainter().translate(x, y);
-    getPainter().drawPolygon(poly);
+    getPainter().drawConvexPolygon(points);
     getPainter().restore();
-    getPainter().drawText(poly[0].x(), poly[0].y()+50, QString("ID: " + QString::number(shapeId)));
+    getPainter().drawText(points[0].x(), points[0].y()+50, QString("ID: " + QString::number(shapeId)));
 }
 
 double Polygon::area(){
     double sum = 0;
-    for(int i = 0; i <= poly.size()-1; i++){
-        if(i == poly.size()-1){
-            sum += (poly[i].x() * poly[0].y()) - (poly[0].x() * poly[i].y());
+    for(int i = 0; i <= points.size()-1; i++){
+        if(i == points.size()-1){
+            sum += (points[i].x() * points[0].y()) - (points[0].x() * points[i].y());
             break;
         }
-        sum += (poly[i].x() * poly[i+1].y()) - (poly[i+1].x() * poly[i].y());
+        sum += (points[i].x() * points[i+1].y()) - (points[i+1].x() * points[i].y());
     }
     return (sum/2);
 }
 
 double Polygon::perimeter(){
     double sum = 0;
-    for(int i = 0; i <= poly.size()-1; i++){
-        if(i == poly.size()-1){
-            sum += sqrt(pow(poly[i].x() - poly[0].x(), 2) + pow(poly[i].y() - poly[0].y(), 2));
+    for(int i = 0; i <= points.size()-1; i++){
+        if(i == points.size()-1){
+            sum += sqrt(pow(points[i].x() - points[0].x(), 2) + pow(points[i].y() - points[0].y(), 2));
             break;
         }
-        sum += sqrt(pow(poly[i].x() - poly[i+1].x(), 2) + pow(poly[i].y() - poly[i+1].y(), 2));
+        sum += sqrt(pow(points[i].x() - points[i+1].x(), 2) + pow(points[i].y() - points[i+1].y(), 2));
     }
     return sum;
 }
