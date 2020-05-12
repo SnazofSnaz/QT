@@ -14,6 +14,12 @@ public:
     QSize minimumSizeHint() const override;
     QSize sizeHint() const override;
     void drawCompleteLine();
+    void drawCompletePolyline();
+    void drawCompletePolygon();
+    void drawCompleteSquare();
+    void drawCompleteRectangle();
+    void drawCompleteEllipse();
+    void drawCompleteCircle();
     QString getCombo(QString c);
 
 protected:

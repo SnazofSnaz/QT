@@ -92,7 +92,7 @@ double Polyline::perimeter(){
 // POLYGON ----------------------------------------------------
 
 void Polygon::setPoints(const QVector<QPoint> points){
-    this->points == points;
+    this->points = points;
 }
 
 void Polygon::draw(const int x, const int y){
@@ -100,7 +100,7 @@ void Polygon::draw(const int x, const int y){
     getPainter().setBrush(getBrush());
     getPainter().save();
     getPainter().translate(x, y);
-    getPainter().drawConvexPolygon(points);
+    getPainter().drawConvexPolygon(&points.first(),points.size());
     getPainter().restore();
     getPainter().drawText(points[0].x(), points[0].y()+50, QString("ID: " + QString::number(shapeId)));
 }

@@ -41,7 +41,12 @@ void MainWindow::on_guestButton_clicked()
 void MainWindow::changetoGuestLandingPage()
 {
     ui->stackedWidget->setCurrentWidget(ui->landingPAge);
-    page++;
+    if(page > 0)
+    {
+        ui->loginType->setText("Admin");
+    }
+    else
+        ui->loginType->setText("Guest User");
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* pe)
@@ -60,6 +65,7 @@ void MainWindow::on_LoginButton_clicked()
     {
      QMessageBox::information(this, "Login", "Username and password is correct");
      changetoGuestLandingPage();
+     page++;
      this->ui->usernameLine->setText("");
      this->ui->passwordLine->setText("");
     }
