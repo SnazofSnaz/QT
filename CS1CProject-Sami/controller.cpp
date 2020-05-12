@@ -714,7 +714,7 @@ QVector<QString> controller::readSquareEnums()
             brushColor = qry.value(15).toString();
             brushStyle = qry.value(16).toString();
 
-            qDebug() << color << brushStyle << endl;
+            qDebug() << color << width << style << capStyle << joinStyle << brushColor <<brushStyle << endl;
         }
     }
     else if(!qry.exec())
@@ -896,6 +896,87 @@ QVector<QString> controller::readCircleEnums()
 
      return circleEnums;
 }
+QVector<int> controller::readText()
+{
+    QSqlQuery qry;
+    int dimenOne;
+    int dimenTwo;
+    int dimenThree;
+    int dimenFour;
+
+    qry.prepare("select * from text where type = 'Text'");
+    if (qry.exec())
+    {
+        while(qry.next())
+        {
+            dimenOne = qry.value(2).toInt();
+            dimenTwo = qry.value(3).toInt();
+            dimenThree = qry.value(4).toInt();
+            dimenFour = qry.value(5).toInt();
+
+            qDebug() << dimenOne << dimenFour << endl;
+        }
+    }
+    else if(!qry.exec())
+    {
+         qDebug() << "Error reading Text dimensions" << endl;
+    }
+    qry.clear();
+    QVector<int> textPoints(4);
+    textPoints[0] = dimenOne;
+    textPoints[1]= dimenTwo;
+    textPoints[2]=dimenThree;
+    textPoints[3]=dimenFour;
+
+    return textPoints;
+}
+
+QVector<QString> controller::readTextEnums()
+{
+    QSqlQuery qry;
+
+    QString textString;
+    QString color;
+    QString allignment;
+    QString pointSize;
+    QString fontFamily;
+    QString fontStyle;
+    QString fontWeight;
+
+    qry.prepare("select * from text where type = 'Text'");
+    if (qry.exec())
+    {
+        while(qry.next())
+        {
+            textString = qry.value(10).toString();
+            color = qry.value(11).toString();
+            allignment = qry.value(12).toString();
+            pointSize = qry.value(13).toString();
+            fontFamily = qry.value(14).toString();
+            fontStyle = qry.value(15).toString();
+            fontWeight = qry.value(16).toString();
+
+            qDebug() << color << fontWeight << endl;
+        }
+    }
+    else if(!qry.exec())
+    {
+         qDebug() << "Error reading Line Enums" << endl;
+    }
+
+    qry.clear();
+
+     QVector<QString> textEnums(7);
+     textEnums[0] = textString;
+     textEnums[1] = color;
+     textEnums[2] = allignment;
+     textEnums[3] = pointSize;
+     textEnums[4] = fontFamily;
+     textEnums[5] = fontStyle;
+     textEnums[6] = fontWeight;
+
+     return textEnums;
+}
 
 void controller::updatePermandArea(double a, double p, int id)
 {
@@ -908,4 +989,9 @@ void controller::updatePermandArea(double a, double p, int id)
     qry.exec();
 
     qry.clear();
+}
+void controller::saveByID()
+{
+    QSqlQuery qry;
+    qry.prepare("select * shape order by id asc");
 }

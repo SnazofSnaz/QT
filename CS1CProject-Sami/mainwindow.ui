@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="LoginPage">
      <widget class="QGroupBox" name="groupBox">
@@ -218,52 +218,7 @@
       </property>
       <item>
        <property name="text">
-        <string>Select Here</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Line</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Polygon</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Polyline</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Rectangle</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Square</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Ellipse</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Circle</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Text</string>
+        <string>Select Item</string>
        </property>
       </item>
      </widget>
@@ -323,7 +278,7 @@
       <property name="geometry">
        <rect>
         <x>980</x>
-        <y>250</y>
+        <y>130</y>
         <width>71</width>
         <height>16</height>
        </rect>
@@ -336,7 +291,7 @@
       <property name="geometry">
        <rect>
         <x>980</x>
-        <y>280</y>
+        <y>150</y>
         <width>41</width>
         <height>16</height>
        </rect>
@@ -349,7 +304,7 @@
       <property name="geometry">
        <rect>
         <x>1050</x>
-        <y>250</y>
+        <y>150</y>
         <width>58</width>
         <height>16</height>
        </rect>
@@ -361,14 +316,40 @@
      <widget class="QLabel" name="area">
       <property name="geometry">
        <rect>
-        <x>1020</x>
-        <y>280</y>
+        <x>1050</x>
+        <y>130</y>
         <width>58</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="circRender">
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>190</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Render</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cirDelete">
+      <property name="geometry">
+       <rect>
+        <x>1080</x>
+        <y>190</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete</string>
       </property>
      </widget>
     </widget>

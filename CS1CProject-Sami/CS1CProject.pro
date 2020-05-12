@@ -20,6 +20,7 @@ SOURCES += \
     Canvas.cpp \
     contactus.cpp \
     controller.cpp \
+    globals.cpp \
     main.cpp \
     mainwindow.cpp \
     shape.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     Canvas.h \
     contactus.h \
     controller.h \
+    globals.h \
     mainwindow.h \
     shape.h \
     testimonials.h \

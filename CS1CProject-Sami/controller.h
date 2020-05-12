@@ -23,6 +23,7 @@ public:
     void createTextTable();
     bool readShapesFile();
     void addPerimeterandArea();
+    void saveByID();
     void updatePermandArea(double a, double p, int id);
     void createShape(int id, QString type, int dimenOne, int dimenTwo, int dimenThree, int dimenFour, int dimenFive, int dimenSix, int dimenSeven,
                      int dimenEight, QString color, int width, QString style, QString capStyle, QString joinStyle,
@@ -46,6 +47,8 @@ public:
     QVector<QString> readEllipseEnums();
     QVector<int>     readCircle();
     QVector<QString> readCircleEnums();
+    QVector<int>     readText();
+    QVector<QString> readTextEnums();
 
 
 private:

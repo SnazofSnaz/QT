@@ -20,6 +20,7 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+class Canvas;
 
 class MainWindow : public QMainWindow
 {
@@ -51,10 +52,17 @@ private slots:
 
     void on_shapeCombo_currentIndexChanged(const QString &arg1);
 
+    void shapeChanged();
+
+    void on_circRender_clicked();
+
+    void on_cirDelete_clicked();
+
 protected:
     void keyPressEvent(QKeyEvent* pe);
 
 private:
+    Canvas *canvas;
     Ui::MainWindow *ui;
     controller *m_controller;
 };
