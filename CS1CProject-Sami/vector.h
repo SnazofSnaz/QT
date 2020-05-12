@@ -9,26 +9,28 @@
 #define VECTOR_H_
 
 #include <algorithm> // std::copy
+#include <QObject>
 using std::copy;
 
 namespace myStd
 {
 
-class vector
+class vector : public QObject
 {
-    /*
-    vector of doubles much like stl vector container
+    private:
+        /*
+        vector of doubles much like stl vector container
 
-    NOTE: elem[n] is vector component n for all n >= 0 AND n < size_v
-          size_v = the number of items stored in the vector
-          space = the available storage capacity of the vector where size_v <= space
-          if size_v < space there is space for (space - size_v) doubles after elem[size_v-1]
-    */
+        NOTE: elem[n] is vector component n for all n >= 0 AND n < size_v
+              size_v = the number of items stored in the vector
+              space = the available storage capacity of the vector where size_v <= space
+              if size_v < space there is space for (space - size_v) doubles after elem[size_v-1]
+        */
 
-    int size_v;   // the size
-    double *elem; // pointer to the elements (or 0)
-    int space;    // number of elements plus number of free slots
-public:
+        int size_v;   // the size
+        double *elem; // pointer to the elements (or 0)
+        int space;    // number of elements plus number of free slots
+    public:
     vector() : size_v{0}, elem{nullptr}, space{0} {} // default constructor
 
     explicit vector(int s) : size_v{s}, elem{new double[s]}, space{s} // alternate constructor
