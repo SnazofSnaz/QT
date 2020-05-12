@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "shape.h"
 #include "vector.h"
+#include "controller.h"
 
 class Canvas : public QWidget
 {
@@ -12,14 +13,16 @@ public:
     Canvas(QWidget *parent = 0);
     QSize minimumSizeHint() const override;
     QSize sizeHint() const override;
+    void drawCompleteLine();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
-private:
 
+private:
     bool antialiased;
     bool transformed;
     const QImage target;
     int selected;
+    controller *c_controller;
 };
 #endif // CANVAS_H
